@@ -12,7 +12,7 @@
 
 ## 🌐 在线访问
 
-访问地址：[https://godmid.github.io/pomodoro-timer](https://godmid.github.io/pomodoro-timer)
+访问地址：[https://godmid.github.io/better-pomodoro](https://godmid.github.io/better-pomodoro)
 
 3. 使用本地服务器运行项目
    - 使用 VS Code Live Server 插件
