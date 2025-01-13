@@ -8,9 +8,7 @@
  * Designed by DarkFox
  -->
 
-# 🍅 番茄工作法计时器
-
-![Deploy Status](https://github.com/godmid/pomodoro-timer/actions/workflows/deploy.yml/badge.svg)
+# 🍅 更好的番茄钟 Demo V1
 
 ## 🌐 在线访问
 
