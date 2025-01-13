@@ -1,0 +1,314 @@
+<!--
+ *  ┌───┐   ┌───┬───┬───┬───┐ ┌───┬───┬───┬───┐ ┌───┬───┬───┬───┐ ┌───┬───┬───┐
+ *  │Esc│   │ F1│ F2│ F3│ F4│ │ F5│ F6│ F7│ F8│ │ F9│F10│F11│F12│ │P/S│S L│P/B│  ┌┐    ┌┐    ┌┐
+ *  └───┘   └───┴───┴───┴───┘ └───┴───┴───┴───┘ └───┴───┴───┴───┘ └───┴───┴───┘  └┘    └┘    └┘
+ *  ┌───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───────┐ ┌───┬───┬───┐ ┌───┬───┬───┬───┐
+ *  │~ `│! 1│@ 2│# 3│$ 4│% 5│^ 6│& 7│* 8│( 9│) 0│_ -│+ =│ BacSp │ │Ins│Hom│PUp│ │N L│ / │ * │ - │
+ *  ├───┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─────┤ ├───┼───┼───┤ ├───┼───┼───┼───┤
+ *  │ Tab │ Q │ W │ E │ R │ T │ Y │ U │ I │ O │ P │{ [│} ]│ | \ │ │Del│End│PDn│ │ 7 │ 8 │ 9 │   │
+ *  ├─────┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴─────┤ └───┴───┴───┘ ├───┼───┼───┤ + │
+ *  │ Caps │ A │ S │ D │ F │ G │ H │ J │ K │ L │: ;│" '│ Enter  │               │ 4 │ 5 │ 6 │   │
+ *  ├──────┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴────────┤     ┌───┐     ├───┼───┼───┼───┤
+ *  │ Shift  │ Z │ X │ C │ V │ B │ N │ M │< ,│> .│? /│  Shift   │     │ ↑ │     │ 1 │ 2 │ 3 │   │
+ *  ├─────┬──┴─┬─┴──┬┴───┴───┴───┴───┴───┴──┬┴───┼───┴┬────┬────┤ ┌───┼───┼───┐ ├───┴───┼───┤ E││
+ *  │ Ctrl│    │Alt │         Space         │ Alt│    │    │Ctrl│ │ ← │ ↓ │ → │ │   0   │ . │←─┘│
+ *  └─────┴────┴────┴───────────────────────┴────┴────┴────┴────┘ └───┴───┴───┘ └───────┴───┴───┘
+ * 
+ * @Author: DarkFox
+ * @Date: 2025-01-13 22:52:06
+ * @LastEditTime: 2025-01-13 22:56:23
+ * @LastEditors: DarkFox
+ * @Description: 
+ * @FilePath: \AI页面测试\index.html
+ * Designed by DarkFox
+ -->
+
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>番茄工作法计时器</title>
+    <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+    <!-- 添加背景动画元素 -->
+    <div class="background">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+    
+    <div class="container">
+        <!-- 添加主题切换按钮 -->
+        <div class="theme-switch">
+            <button class="theme-toggle" id="themeToggle">
+                <span class="theme-icon light">☀️</span>
+                <span class="theme-icon dark">🌙</span>
+            </button>
+        </div>
+        <!-- 添加图标 -->
+        <div class="tomato-icon">🍅</div>
+        <h1>番茄工作法计时器</h1>
+        <div class="timer">
+            <!-- 添加进度环 -->
+            <div class="progress-ring">
+                <svg class="progress" viewBox="0 0 100 100">
+                    <circle class="progress-ring-bg" cx="50" cy="50" r="45"/>
+                    <circle class="progress-ring-circle" cx="50" cy="50" r="45"/>
+                </svg>
+                <div class="time-display">25:00</div>
+            </div>
+            <div class="controls">
+                <div class="button-wrapper">
+                    <button id="start"><i class="icon">▶️</i>开始</button>
+                    <div class="particles"></div>
+                </div>
+                <div class="button-wrapper">
+                    <button id="pause"><i class="icon">⏸️</i>暂停</button>
+                    <div class="particles"></div>
+                </div>
+                <div class="button-wrapper">
+                    <button id="reset"><i class="icon">🔄</i>重置</button>
+                    <div class="particles"></div>
+                </div>
+            </div>
+        </div>
+        <div class="mode-switch">
+            <button id="work-mode" class="active">💻 工作时间</button>
+            <button id="break-mode">☕ 休息时间</button>
+        </div>
+        
+        <!-- 添加便贴区域 -->
+        <div class="sticky-note">
+            <div class="note-content">
+                <p class="quote">点击便贴刷新鼓励语 ✨</p>
+                <div class="note-tape"></div>
+            </div>
+        </div>
+
+        <!-- 添加统计面板 -->
+        <div class="stats-panel">
+            <div class="stats-container">
+                <div class="stat-item">
+                    <div class="stat-icon">🎯</div>
+                    <div class="stat-value" id="total-pomodoros">0</div>
+                    <div class="stat-label">完成番茄钟</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-icon">⏱️</div>
+                    <div class="stat-value" id="total-focus-time">0分钟</div>
+                    <div class="stat-label">专注时间</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-icon">🔥</div>
+                    <div class="stat-value" id="current-streak">0</div>
+                    <div class="stat-label">连续天数</div>
+                </div>
+            </div>
+            <div class="achievement-banner" id="achievement-banner">
+                <span class="achievement-icon">🏆</span>
+                <span class="achievement-text">继续保持！</span>
+            </div>
+        </div>
+
+        <!-- 在 stats-panel 后添加成就面板 -->
+        <div class="achievements-panel">
+            <h2 class="achievements-title">🏆 成就系统</h2>
+            <div class="achievements-grid">
+                <div class="achievement-card" data-achievement="first_pomodoro">
+                    <div class="achievement-icon">🌱</div>
+                    <div class="achievement-info">
+                        <h3>初次尝试</h3>
+                        <p>完成第一个番茄钟</p>
+                    </div>
+                    <div class="achievement-progress">
+                        <div class="progress-bar" style="width: 0%"></div>
+                    </div>
+                    <div class="achievement-lock">🔒</div>
+                </div>
+                <div class="achievement-card" data-achievement="speed_runner">
+                    <div class="achievement-icon">⚡</div>
+                    <div class="achievement-info">
+                        <h3>效率达人</h3>
+                        <p>一天内完成5个番茄钟</p>
+                    </div>
+                    <div class="achievement-progress">
+                        <div class="progress-bar" style="width: 0%"></div>
+                    </div>
+                    <div class="achievement-lock">🔒</div>
+                </div>
+                <div class="achievement-card" data-achievement="persistent">
+                    <div class="achievement-icon">🔥</div>
+                    <div class="achievement-info">
+                        <h3>坚持不懈</h3>
+                        <p>连续使用7天</p>
+                    </div>
+                    <div class="achievement-progress">
+                        <div class="progress-bar" style="width: 0%"></div>
+                    </div>
+                    <div class="achievement-lock">🔒</div>
+                </div>
+                <div class="achievement-card" data-achievement="night_owl">
+                    <div class="achievement-icon">🦉</div>
+                    <div class="achievement-info">
+                        <h3>夜间专注</h3>
+                        <p>在晚上10点后完成一个番茄钟</p>
+                    </div>
+                    <div class="achievement-progress">
+                        <div class="progress-bar" style="width: 0%"></div>
+                    </div>
+                    <div class="achievement-lock">🔒</div>
+                </div>
+                <div class="achievement-card" data-achievement="early_bird">
+                    <div class="achievement-icon">🌅</div>
+                    <div class="achievement-info">
+                        <h3>早起达人</h3>
+                        <p>在早上6点前开始一个番茄钟</p>
+                    </div>
+                    <div class="achievement-progress">
+                        <div class="progress-bar" style="width: 0%"></div>
+                    </div>
+                    <div class="achievement-lock">🔒</div>
+                </div>
+                <div class="achievement-card" data-achievement="weekend_warrior">
+                    <div class="achievement-icon">🎯</div>
+                    <div class="achievement-info">
+                        <h3>周末战士</h3>
+                        <p>在周末完成10个番茄钟</p>
+                    </div>
+                    <div class="achievement-progress">
+                        <div class="progress-bar" style="width: 0%"></div>
+                    </div>
+                    <div class="achievement-lock">🔒</div>
+                </div>
+                <div class="achievement-card" data-achievement="marathon">
+                    <div class="achievement-icon">🏃</div>
+                    <div class="achievement-info">
+                        <h3>马拉松</h3>
+                        <p>连续完成4个番茄钟</p>
+                    </div>
+                    <div class="achievement-progress">
+                        <div class="progress-bar" style="width: 0%"></div>
+                    </div>
+                    <div class="achievement-lock">🔒</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 添加社交面板 -->
+        <div class="social-panel">
+            <div class="panel-header">
+                <h2>🏆 排行榜 & 好友</h2>
+                <button class="add-friend-btn" id="addFriendBtn">
+                    <span class="icon">👥</span> 添加好友
+                </button>
+            </div>
+            
+            <div class="leaderboard-section">
+                <h3>📊 本周排行</h3>
+                <div class="leaderboard-list" id="leaderboard">
+                    <!-- 排行榜项目将通过 JS 动态添加 -->
+                </div>
+            </div>
+
+            <div class="friends-section">
+                <h3>👥 好友动态</h3>
+                <div class="friends-list" id="friendsList">
+                    <!-- 好友列表将通过 JS 动态添加 -->
+                </div>
+            </div>
+
+            <!-- 添加好友对话框 -->
+            <div class="modal" id="addFriendModal">
+                <div class="modal-content">
+                    <h3>添加好友</h3>
+                    <input type="text" id="friendCode" placeholder="输入好友码">
+                    <div class="modal-buttons">
+                        <button class="cancel-btn">取消</button>
+                        <button class="confirm-btn">添加</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 在社交面板后添加背包系统 -->
+        <div class="inventory-panel">
+            <div class="panel-header">
+                <h2>🎒 背包 & 道具</h2>
+                <div class="currency">
+                    <span class="tomato-coins">🍅 番茄币: <span id="coinAmount">0</span></span>
+                </div>
+            </div>
+            
+            <div class="inventory-grid">
+                <!-- 道具槽位 -->
+                <div class="item-slot" data-item="time_freeze">
+                    <div class="item-icon">⏱️</div>
+                    <div class="item-info">
+                        <h3>时间冻结</h3>
+                        <p>暂停5分钟计时，但保持专注状态</p>
+                        <div class="item-amount">拥有: <span>0</span></div>
+                        <button class="use-item-btn" disabled>使用</button>
+                    </div>
+                    <div class="item-price">100 🍅</div>
+                </div>
+
+                <div class="item-slot" data-item="double_coins">
+                    <div class="item-icon">💰</div>
+                    <div class="item-info">
+                        <h3>双倍奖励</h3>
+                        <p>下一个番茄钟获得双倍番茄币</p>
+                        <div class="item-amount">拥有: <span>0</span></div>
+                        <button class="use-item-btn" disabled>使用</button>
+                    </div>
+                    <div class="item-price">150 🍅</div>
+                </div>
+
+                <div class="item-slot" data-item="focus_shield">
+                    <div class="item-icon">🛡️</div>
+                    <div class="item-info">
+                        <h3>专注护盾</h3>
+                        <p>一次中断计时的豁免机会</p>
+                        <div class="item-amount">拥有: <span>0</span></div>
+                        <button class="use-item-btn" disabled>使用</button>
+                    </div>
+                    <div class="item-price">200 🍅</div>
+                </div>
+
+                <div class="item-slot" data-item="time_warp">
+                    <div class="item-icon">⚡</div>
+                    <div class="item-info">
+                        <h3>时间加速</h3>
+                        <p>本次番茄钟时间流逝速度提升20%</p>
+                        <div class="item-amount">拥有: <span>0</span></div>
+                        <button class="use-item-btn" disabled>使用</button>
+                    </div>
+                    <div class="item-price">250 🍅</div>
+                </div>
+            </div>
+
+            <!-- 商店按钮 -->
+            <button class="shop-btn" id="openShopBtn">
+                <span class="icon">🏪</span> 打开商店
+            </button>
+
+            <!-- 商店模态框 -->
+            <div class="modal" id="shopModal">
+                <div class="modal-content shop-content">
+                    <h3>🏪 道具商店</h3>
+                    <div class="shop-items">
+                        <!-- 商店物品将通过JS动态添加 -->
+                    </div>
+                    <button class="close-shop-btn">关闭</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="./script.js"></script>
+</body>
+</html> 

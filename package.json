@@ -1,0 +1,14 @@
+{
+  "name": "pomodoro-timer",
+  "version": "1.0.0",
+  "description": "A Pomodoro Timer with gamification features",
+  "scripts": {
+    "test": "echo \"No test specified\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yourusername/pomodoro-timer.git"
+  },
+  "author": "DarkFox",
+  "license": "MIT"
+} 
