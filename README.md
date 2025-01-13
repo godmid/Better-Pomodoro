@@ -10,11 +10,11 @@
 
 # 🍅 番茄工作法计时器
 
-![Deploy Status](https://github.com/yourusername/pomodoro-timer/actions/workflows/deploy.yml/badge.svg)
+![Deploy Status](https://github.com/godmid/pomodoro-timer/actions/workflows/deploy.yml/badge.svg)
 
 ## 🌐 在线访问
 
-访问地址：[https://yourusername.github.io/pomodoro-timer](https://yourusername.github.io/pomodoro-timer)
+访问地址：[https://godmid.github.io/pomodoro-timer](https://godmid.github.io/pomodoro-timer)
 
 3. 使用本地服务器运行项目
    - 使用 VS Code Live Server 插件
