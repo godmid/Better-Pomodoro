@@ -12,7 +12,7 @@
 
 ## 🌐 在线访问
 
-访问地址：[https://godmid.github.io/better-pomodoro](https://godmid.github.io/better-pomodoro)
+访问地址：[https://darkfoxtechnology.github.io/Better-Pomodoro-V1/](https://darkfoxtechnology.github.io/Better-Pomodoro-V1/)
 
 3. 使用本地服务器运行项目
    - 使用 VS Code Live Server 插件
